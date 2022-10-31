@@ -19,9 +19,22 @@ def nltk_pos_tagger(nltk_tag):
         return None
 
 
-def lemmatize_sentence(name):
-    reader = TextReader()
-    sentence = reader.readFileString(name)
+# def lemmatize_sentence(name):
+#     reader = TextReader()
+#     sentence = reader.readFileString(name)
+#     nltk_tagged = nltk.pos_tag(nltk.word_tokenize(sentence))
+#     wordnet_tagged = map(lambda x: (x[0], nltk_pos_tagger(x[1])), nltk_tagged)
+#     lemmatized_sentence = []
+#
+#     for word, tag in wordnet_tagged:
+#         if tag is None:
+#             lemmatized_sentence.append(word)
+#         else:
+#             lemmatized_sentence.append(lemmatizer.lemmatize(word, tag))
+#     return lemmatized_sentence
+
+
+def lemmatize_sentence(sentence):
     nltk_tagged = nltk.pos_tag(nltk.word_tokenize(sentence))
     wordnet_tagged = map(lambda x: (x[0], nltk_pos_tagger(x[1])), nltk_tagged)
     lemmatized_sentence = []
@@ -31,6 +44,9 @@ def lemmatize_sentence(name):
             lemmatized_sentence.append(word)
         else:
             lemmatized_sentence.append(lemmatizer.lemmatize(word, tag))
-    return lemmatized_sentence
+    return " ".join(lemmatized_sentence)
 
-print(lemmatize_sentence("text_5.txt"))
+
+print(lemmatize_sentence("I am voting for that politician in this NLTK Lemmatization example sentence"))
+
+# print(lemmatize_sentence("text_5.txt"))

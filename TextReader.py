@@ -16,6 +16,8 @@ class TextReader:
     def getText(self, name):
         stop_words = set(stopwords.words('english'))
         stop_words.add("the")
+        stop_words.add("two")
+        stop_words.add("three")
         raw_text = self.__readFileString(name)
         processed_text = []
         raw_text = self.__lemmatize_sentence(raw_text)
