@@ -28,7 +28,7 @@ def calculate_TF(unique_words, texts):
     for text in texts:
         words = dict()
         for word in unique_words:
-            words[word] = text.count(word)
+            words[word] = text.count(word)/len(unique_words)
         TF.append(words)
 
     return TF
@@ -63,7 +63,7 @@ def create_random_centriods(clusters_num, len, max):
     for i in range(0, clusters_num):
         centroid = []
         for coordinate in range(0, len):
-            centroid.append(uniform(0, max[0]))
+            centroid.append(uniform(0, 1))
         centroids.append(centroid)
 
     return centroids
